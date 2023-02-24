@@ -1,16 +1,15 @@
 --library_populate.sql
-
 --author name: Peter Wotherspoon Bustamante
 
 
 
 /*
-
 Putting some copies of books into the database, as well as 
 some loans, and reservations, for books that are currently
 unavailable.
-
 */
+
+
 
 
 -- Populate the BOOK_COPY Table:
