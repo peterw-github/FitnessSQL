@@ -1,16 +1,13 @@
 --medfacility_queries.sql
-
-
 --author name: Peter Wotherspoon Bustamante
 
 
 /* 
-
 Practicing some more advanced queries, that are being applied to a
 mock medical facility relational database. Various types of joins between 
 multiple tables (made in in careful order), are included in these queries.
-
 */
+
 
 
 
@@ -25,11 +22,13 @@ ORDER BY doctor_lname, doctor_fname;
 
 
 
+
 --Query 2:
 SELECT item_code, item_description, item_stock, cc_title
 FROM CGH.ITEM I JOIN CGH.COSTCENTRE C ON i.cc_code = c.cc_code
 WHERE lower(i.item_description) LIKE '%disposable%'
 ORDER BY item_code;
+
 
 
 
@@ -58,15 +57,14 @@ ORDER BY p.proc_std_cost DESC;
 
 
 
-*/
 
-Regarding Query 5:
+/*
+Note for Query 5:
 I ordered date of birth, by OLDEST first, 
 (since oldest are generally most vulnerable), 
 that way the client can see highest admissions, 
 AND OLDEST, first (so, most vulnerable patients).
-
-/*
+*/
 
 --Query 5:
 SELECT p.patient_id, p.patient_lname, p.patient_fname, 
@@ -79,6 +77,8 @@ ORDER BY count(*) DESC, p.patient_dob;
 
 
 
+
+
 --Query 6:
 SELECT a.adm_no, a.patient_id, p.patient_fname, p.patient_lname, 
     floor(a.adm_discharge - a.adm_date_time) || ' days ' || 
@@ -88,6 +88,7 @@ FROM CGH.ADMISSION a JOIN CGH.PATIENT p ON a.patient_id = p.patient_id
 WHERE a.adm_discharge IS NOT NULL and (a.adm_discharge - a.adm_date_time) > 
     (SELECT avg(a.adm_discharge - a.adm_date_time) from CGH.ADMISSION a)
 ORDER BY a.adm_no;
+
 
 
 
