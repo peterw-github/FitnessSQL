@@ -1,6 +1,4 @@
 --library_3tables.sql
-
-
 --author name: Peter Wotherspoon Bustamante
 
 
@@ -8,16 +6,17 @@
 
 
 /* 
-
 Creating three different tables, then adding appropriate constraints and comments
 to each tables individual attributes. Also including foreign key constraints at 
 the end.
-
 */
 
 
 
--- BOOK_COPY
+
+
+
+-- Creating table: BOOK_COPY
 CREATE TABLE BOOK_COPY
 (
     branch_code         numeric(2)      NOT NULL,
@@ -53,7 +52,8 @@ COMMENT ON COLUMN BOOK_COPY.book_call_no IS
 
 
 
--- LOAN
+
+-- Creating table: LOAN
 CREATE TABLE LOAN
 (
     branch_code             numeric(2)      NOT NULL,
@@ -91,7 +91,7 @@ COMMENT ON COLUMN LOAN.bor_no IS
 
 
 
--- RESERVE
+-- Creating table: RESERVE
 CREATE TABLE RESERVE
 (
     reserve_id      numeric(6)      NOT NULL,
@@ -128,7 +128,7 @@ COMMENT ON COLUMN RESERVE.bor_no IS
 
 
 
--- Add all missing FK Constraints below here
+
 
 -- Foreign Keys for BOOK_COPY:
 ALTER TABLE BOOK_COPY ADD 
@@ -150,11 +150,6 @@ ALTER TABLE RESERVE ADD
     CONSTRAINT RESERVE_BRANCH_FK FOREIGN KEY (branch_code, bc_id) REFERENCES BOOK_COPY (branch_code, bc_id),
     CONSTRAINT RESERVE_BORR_FK FOREIGN KEY (bor_no) REFERENCES BORROWER (bor_no)
 );
-
-
-
-
-
 
 
 
