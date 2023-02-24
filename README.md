@@ -49,7 +49,7 @@ https://github.com/peterw-github/FitnessSQL/blob/main/Logical%20Model/logicalmod
 <br>
 <br>
 
-# Additional SQL Code
+## Additional SQL Code
 
 With the fitness businesses database now fully built in Oracle SQL Developer, I began practicing SQL, on two other mock relational databases in Oracle. 
 
