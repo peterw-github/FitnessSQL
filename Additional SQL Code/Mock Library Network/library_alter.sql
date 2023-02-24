@@ -26,6 +26,8 @@ implemented, constraints added, and table populated.
 
 
 
+
+
 -- Adding new book attribute (book condition):
 ALTER TABLE BOOK_COPY ADD
 (
@@ -54,6 +56,8 @@ COMMIT;
 
 
 
+
+
 -- Adding in attribute to keep track of return branch
 ALTER TABLE LOAN ADD
 (
@@ -74,6 +78,7 @@ WHERE loan_actual_return_date >= TO_DATE('01-Jun-2021', 'DD-MON-YYYY')
     AND loan_actual_return_date <= TO_DATE('05-Oct-2021', 'DD-MON-YYYY');
 
 COMMIT;
+
 
 
 
