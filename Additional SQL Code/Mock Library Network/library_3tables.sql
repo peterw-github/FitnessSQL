@@ -53,6 +53,7 @@ COMMENT ON COLUMN BOOK_COPY.book_call_no IS
 
 
 
+
 -- Creating table: LOAN
 CREATE TABLE LOAN
 (
@@ -86,6 +87,9 @@ COMMENT ON COLUMN LOAN.loan_actual_return_date IS
 
 COMMENT ON COLUMN LOAN.bor_no IS
     'Borrower identifier';
+
+
+
 
 
 
