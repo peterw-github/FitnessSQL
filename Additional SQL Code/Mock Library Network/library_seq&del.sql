@@ -1,4 +1,4 @@
---library_seql&del.sql
+--library_seq&del.sql
 --author name: Peter Wotherspoon Bustamante
 
 
