@@ -1,12 +1,9 @@
 --library_alter.sql
-
-
 --author name: Peter Wotherspoon Bustamante
 
 
 
 /*
-
 First, adding in a new attribute to book copies: "bc_condition",
 which is just a general summary of its condition, either "G"
 for Good, "D" for damaged, or "L" for lost. Appropriate constraint applied.
@@ -22,14 +19,12 @@ branches.
 Finally, relationship between BRANCH and MANAGER entity, has changed. Cardinality
 is now MANY TO MANY, thus new intermediate table is required. Intermediate table 
 implemented, constraints added, and table populated.
-
-
 */
 
 
 
 
--- 3 (a)
+
 
 -- Adding new book attribute (book condition):
 ALTER TABLE BOOK_COPY ADD
@@ -58,7 +53,6 @@ COMMIT;
 
 
 
--- 3 (b)
 
 -- Adding in attribute to keep track of return branch
 ALTER TABLE LOAN ADD
@@ -70,6 +64,7 @@ COMMENT ON COLUMN LOAN.loan_return_branch IS
     'The branch that the book copy was returned to';
     
 ALTER TABLE LOAN ADD CONSTRAINT loan_branchcode_fk FOREIGN KEY (loan_return_branch) REFERENCES BRANCH (branch_code);
+
 
 
 -- Update all completed loans, from June 1st, to "Now" (Oct 5th), return branch is same as where they borrowed it from.
@@ -86,7 +81,6 @@ COMMIT;
 
 
 
--- 3 (c)
 
 -- Many to Many relationship between BRANCH and MANAGER, thus new table required.
 -- Note: Client stated 90% of branches will have managers that manage BOTH (B), thus B is default.
@@ -116,6 +110,7 @@ ALTER TABLE BRANCH_MANAGER ADD
 );
 
 
+
 -- Now must populate the new table (BRANCH_MANAGER), using BRANCH data:
 -- Clayton Library
 INSERT INTO BRANCH_MANAGER VALUES
@@ -132,6 +127,7 @@ INSERT INTO BRANCH_MANAGER VALUES
     'F'
 );
 
+
 -- Glen Waverley Library
 INSERT INTO BRANCH_MANAGER VALUES
 (
@@ -140,6 +136,7 @@ INSERT INTO BRANCH_MANAGER VALUES
     'B'
 );
 
+
 -- Mount Waverley Library
 INSERT INTO BRANCH_MANAGER VALUES
 (
@@ -147,6 +144,7 @@ INSERT INTO BRANCH_MANAGER VALUES
     (SELECT man_id FROM BRANCH where branch_name = 'Mount Waverley Library'),
     'B'
 );
+
 
 -- Mulgrave Library
 INSERT INTO BRANCH_MANAGER VALUES
